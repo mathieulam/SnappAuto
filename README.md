@@ -47,6 +47,18 @@ All layers communicate through protocols, making them easy to test and mock.
 - **Response models** (e.g. `CarResponse`, `UserResponse`): Represent the raw API response, suffixed with `Response`
 - **Domain models** (e.g. `Car`, `User`): Clean models used throughout the app
 
+## Development Approach
+
+The project was built incrementally, layer by layer, starting from the data and working up to the UI:
+
+1. **Service layer** — Defined the API contract first: service protocol, response models, and network call to establish a solid data foundation
+2. **Domain layer** — Built the repository and mapper to convert response models into clean domain models, decoupling the rest of the app from the API
+3. **UI** — Created the SwiftUI views and connected them to the data layer through the ViewModel
+4. **Validation** — Verified that search results were displaying correctly end-to-end
+5. **Business rules** — Added debounced search, city filtering, sorting, error handling, and loading states in the ViewModel
+6. **UI polish** — Improved the visual design of the search bar, result cards, and empty states
+7. **Unit tests** — Wrote tests for the mapper to ensure correct data transformation between layers
+
 ## If I Had More Time
 
 - Add pagination to load more results as the user scrolls
